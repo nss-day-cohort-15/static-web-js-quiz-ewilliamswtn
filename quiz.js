@@ -1,6 +1,12 @@
 
 document.getElementById("goButton").addEventListener("click", makeTree);
 
+document.addEventListener('keyup', function (event) {
+  if (event.which === 13) {
+    makeTree();
+  }
+});
+
 function makeTree () {  //function runs when button is clicked
   var height = document.getElementById('height').value;  //height of the tree, should be integer
   var char = document.getElementById('character').value;  //character the tree is comprised of
@@ -14,10 +20,10 @@ function makeTree () {  //function runs when button is clicked
   if (Number.isInteger(parseInt(height))) {  //if it is, run the function
    
   //loops for the first line of tree:
-    for (i = 0; i < height; i++) {  //runs as many times as user has specified "height" to be
+    for (var i = 0; i < height; i++) {  //runs as many times as user has specified "height" to be
       spacer += " ";
     }
-
+    //use template str
     console.log(spacer + " " + char);  //places the first character of the tree, centered
 
   //loops for the rest of the tree:
@@ -30,10 +36,11 @@ function makeTree () {  //function runs when button is clicked
       }
 
       output += char;  //adds a single character to the output string
-
+      
+      //use template str
       console.log(spacer + output + char + output); //final output being logged to each line
 
-      spaces = spaces - 1;  //spaces counter goes down 1, as each line needs less spaces
+      spaces--;  //spaces counter goes down 1, as each line needs less spaces
     }
   } else {  //if it is not, throws it out
     console.log("Enter a number!");
