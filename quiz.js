@@ -1,15 +1,22 @@
 var treeObj = {};
-document.getElementById("goButton").addEventListener("click", makeTree(treeObj));
+document.getElementById("goButton").addEventListener("click", buildTree());
 
 document.addEventListener('keyup', function (event) {
   if (event.which === 13) {
-    makeTree(treeObj);
+    buildTree();
   }
 });
 
+function buildTree () {
+  treeObj.treeHeight = document.getElementById('height').value;  //height of the tree, should be integer
+  treeObj.treeChar = document.getElementById('character').value;  //character the tree is comprised of
+  makeTree(treeObj);
+}
+
+
+
 function makeTree (objPH) {  //function runs when button is clicked
-  objPH.treeHeight = document.getElementById('height').value;  //height of the tree, should be integer
-  objPH.treeChar = document.getElementById('character').value;  //character the tree is comprised of
+  
   var height = objPH.treeHeight;
   var char = objPH.treeChar;
   var output = "";  //holds the long string of characters
