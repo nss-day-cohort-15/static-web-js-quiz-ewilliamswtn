@@ -1,15 +1,17 @@
-
-document.getElementById("goButton").addEventListener("click", makeTree);
+var treeObj = {};
+document.getElementById("goButton").addEventListener("click", makeTree(treeObj));
 
 document.addEventListener('keyup', function (event) {
   if (event.which === 13) {
-    makeTree();
+    makeTree(treeObj);
   }
 });
 
-function makeTree () {  //function runs when button is clicked
-  var height = document.getElementById('height').value;  //height of the tree, should be integer
-  var char = document.getElementById('character').value;  //character the tree is comprised of
+function makeTree (objPH) {  //function runs when button is clicked
+  objPH.treeHeight = document.getElementById('height').value;  //height of the tree, should be integer
+  objPH.treeChar = document.getElementById('character').value;  //character the tree is comprised of
+  var height = objPH.treeHeight;
+  var char = objPH.treeChar;
   var output = "";  //holds the long string of characters
   var spaces = height;  //keeps track of how many spaces required before the first character
   var spacer = "";  //a string to hold the spaces
